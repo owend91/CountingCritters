@@ -1,0 +1,152 @@
+[
+    {
+        "id": "penguin",
+        "name": "penguin",
+        "background": "blue"
+    },
+    {
+        "id": "bear",
+        "name": "bear",
+        "background": "blue"
+    },
+    {
+        "id": "buffalo",
+        "name": "buffalo",
+        "background": "blue"
+    },
+    {
+        "id": "chick",
+        "name": "chick",
+        "background": "blue"
+    },
+    {
+        "id": "chicken",
+        "name": "chicken",
+        "background": "blue"
+    },
+    {
+        "id": "cow",
+        "name": "cow",
+        "background": "blue"
+    },
+    {
+        "id": "crocodile",
+        "name": "crocodile",
+        "background": "blue"
+    },
+    {
+        "id": "dog",
+        "name": "dog",
+        "background": "blue"
+    },
+    {
+        "id": "duck",
+        "name": "duck",
+        "background": "blue"
+    },
+    {
+        "id": "elephant",
+        "name": "elephant",
+        "background": "blue"
+    },
+    {
+        "id": "frog",
+        "name": "frog",
+        "background": "blue"
+    },
+    {
+        "id": "giraffe",
+        "name": "giraffe",
+        "background": "blue"
+    },
+    {
+        "id": "goat",
+        "name": "goat",
+        "background": "blue"
+    },
+    {
+        "id": "gorilla",
+        "name": "gorilla",
+        "background": "blue"
+    },
+    {
+        "id": "hippo",
+        "name": "hippo",
+        "background": "blue"
+    },
+    {
+        "id": "horse",
+        "name": "horse",
+        "background": "blue"
+    },
+    {
+        "id": "monkey",
+        "name": "monkey",
+        "background": "blue"
+    },
+    {
+        "id": "moose",
+        "name": "moose",
+        "background": "blue"
+    },
+    {
+        "id": "narwhal",
+        "name": "narhwal",
+        "background": "blue"
+    },
+    {
+        "id": "owl",
+        "name": "owl",
+        "background": "blue"
+    },
+    {
+        "id": "panda",
+        "name": "panda",
+        "background": "blue"
+    },
+    {
+        "id": "parrot",
+        "name": "parrot",
+        "background": "blue"
+    },
+    {
+        "id": "pig",
+        "name": "pig",
+        "background": "blue"
+    },
+    {
+        "id": "rabbit",
+        "name": "rabbit",
+        "background": "blue"
+    },
+    {
+        "id": "rhino",
+        "name": "rhino",
+        "background": "blue"
+    },
+    {
+        "id": "sloth",
+        "name": "sloth",
+        "background": "blue"
+    },
+    {
+        "id": "snake",
+        "name": "snake",
+        "background": "blue"
+    },
+    {
+        "id": "walrus",
+        "name": "walrus",
+        "background": "blue"
+    },
+    {
+        "id": "whale",
+        "name": "whale",
+        "background": "blue"
+    },
+    {
+        "id": "zebra",
+        "name": "zebra",
+        "background": "blue"
+    }
+]
