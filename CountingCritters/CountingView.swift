@@ -52,7 +52,6 @@ struct CountingView: View {
                     .buttonStyle(BorderedButtonStyle())
                 } else {
                     Text("\(vm.tapCount)")
-                        .font(<#T##Font?#>)
                         .foregroundStyle(.white)
                 }
 
