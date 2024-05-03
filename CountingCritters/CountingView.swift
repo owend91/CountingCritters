@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CountingView: View {
     @State var vm = CountingViewModel()
+
     let columns = [
         GridItem(.flexible()),
             GridItem(.flexible()),
@@ -16,7 +17,7 @@ struct CountingView: View {
     ]
     var body: some View {
         ZStack {
-            Color.blue
+            gradientMap[vm.currentCritter.background]
                 .ignoresSafeArea()
             VStack {
                 Text("Tap on ^[\(vm.pageCount) \(vm.currentCritter.name)](inflect: true)")
@@ -25,22 +26,20 @@ struct CountingView: View {
             }
 
             LazyVGrid(columns: columns) {
-
-                ForEach(1...9, id: \.self) { count in
+            
+                ForEach(0...8, id: \.self) { count in
                     if vm.layout.contains(count) {
-                        CritterView(vm: $vm, critterViewCount: count)
+                        CritterView(vm: $vm, critterViewCount: count, imageTranslation: vm.imageTranslations[count])
                             .onTapGesture {
                                 vm.currentTaps.append(count)
                                 vm.tapCount += 1
                             }
 
-                    } else {
-                        Text("\(count)")
-                            .frame(maxWidth: .infinity, minHeight: 230, maxHeight: .infinity)
                     }
                 }
 
             }
+            .padding(.horizontal)
 
             VStack {
 
@@ -53,6 +52,7 @@ struct CountingView: View {
                     .buttonStyle(BorderedButtonStyle())
                 } else {
                     Text("\(vm.tapCount)")
+                        .font(<#T##Font?#>)
                         .foregroundStyle(.white)
                 }
 
@@ -69,6 +69,7 @@ struct CountingView: View {
 struct CritterView: View {
     @Binding var vm: CountingViewModel
     let critterViewCount: Int
+    let imageTranslation: ImageTranslation
 
     var body: some View {
         Image(vm.currentCritter.id)
@@ -76,6 +77,18 @@ struct CritterView: View {
             .scaledToFit()
             .frame(maxWidth: .infinity, minHeight: 230, maxHeight: .infinity)
             .opacity(vm.currentTaps.contains(critterViewCount) ? 0.5 : 1.0) // Dim the critter if it's already tapped
+            .scaleEffect(imageTranslation.scale)
+            .offset(x: imageTranslation.x, y: imageTranslation.y)
+            .rotationEffect(.degrees(imageTranslation.rotation))
+            .shadow(radius: imageTranslation.shadow)
+            .onAppear {
+                print("Count: \(critterViewCount)")
+                print("Scale: \(imageTranslation.scale)")
+                print("X Offset: \(imageTranslation.x)")
+                print("Y Offset: \(imageTranslation.y)")
+                print("Shadow: \(imageTranslation.shadow)")
+
+            }
     }
 }
 

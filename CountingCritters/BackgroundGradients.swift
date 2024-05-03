@@ -82,3 +82,36 @@ let allGradients = [
     autumnLeaves
 ] as [Any]
 
+let gradientMap = [
+    "sunset" : AnyView(sunset),
+    "oceanBlue" : AnyView(oceanBlue),
+    "dusk" : AnyView(dusk),
+    "forest" : AnyView(forest),
+    "winterFrost" : AnyView(winterFrost),
+    "fire" : AnyView(fire),
+    "mysticPurple" : AnyView(mysticPurple),
+    "sunrise" : AnyView(sunrise),
+    "tropical" : AnyView(tropical),
+    "sandyBeach" : AnyView(sandyBeach),
+    "deepSea" : AnyView(deepSea),
+    "lavenderField" : AnyView(lavenderField),
+    "sunGlow" : AnyView(sunGlow),
+    "alien" : AnyView(alien),
+    "berrySmoothie" : AnyView(berrySmoothie),
+    "rainbow" : AnyView(rainbow),
+    "starlight" : AnyView(starlight),
+    "seaBreeze" : AnyView(seaBreeze),
+    "sunsetGlow" : AnyView(sunsetGlow),
+    "aurora" : AnyView(aurora),
+    "cherryBlossoms" : AnyView(cherryBlossoms),
+    "nightSky" : AnyView(nightSky),
+    "winterMorning" : AnyView(winterMorning),
+    "sunnyDay" : AnyView(sunnyDay),
+    "moonLight" : AnyView(moonLight),
+    "freshLime" : AnyView(freshLime),
+    "passionFruit" : AnyView(passionFruit),
+    "icyBlue" : AnyView(icyBlue),
+    "goldenHour" : AnyView(goldenHour),
+    "autumnLeaves" : AnyView(autumnLeaves)
+] as [String : AnyView]
+

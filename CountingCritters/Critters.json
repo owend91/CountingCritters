@@ -2,151 +2,151 @@
     {
         "id": "penguin",
         "name": "penguin",
-        "background": "blue"
+        "background": "oceanBlue"
     },
     {
         "id": "bear",
         "name": "bear",
-        "background": "blue"
+        "background": "forest"
     },
     {
         "id": "buffalo",
         "name": "buffalo",
-        "background": "blue"
+        "background": "dusk"
     },
     {
         "id": "chick",
         "name": "chick",
-        "background": "blue"
+        "background": "sunset"
     },
     {
         "id": "chicken",
         "name": "chicken",
-        "background": "blue"
+        "background": "winterFrost"
     },
     {
         "id": "cow",
         "name": "cow",
-        "background": "blue"
+        "background": "fire"
     },
     {
         "id": "crocodile",
         "name": "crocodile",
-        "background": "blue"
+        "background": "mysticPurple"
     },
     {
         "id": "dog",
         "name": "dog",
-        "background": "blue"
+        "background": "sunrise"
     },
     {
         "id": "duck",
         "name": "duck",
-        "background": "blue"
+        "background": "tropical"
     },
     {
         "id": "elephant",
         "name": "elephant",
-        "background": "blue"
+        "background": "sandyBeach"
     },
     {
         "id": "frog",
         "name": "frog",
-        "background": "blue"
+        "background": "deepSea"
     },
     {
         "id": "giraffe",
         "name": "giraffe",
-        "background": "blue"
+        "background": "lavenderField"
     },
     {
         "id": "goat",
         "name": "goat",
-        "background": "blue"
+        "background": "sunGlow"
     },
     {
         "id": "gorilla",
         "name": "gorilla",
-        "background": "blue"
+        "background": "alien"
     },
     {
         "id": "hippo",
         "name": "hippo",
-        "background": "blue"
+        "background": "berrySmoothie"
     },
     {
         "id": "horse",
         "name": "horse",
-        "background": "blue"
+        "background": "rainbow"
     },
     {
         "id": "monkey",
         "name": "monkey",
-        "background": "blue"
+        "background": "starlight"
     },
     {
         "id": "moose",
         "name": "moose",
-        "background": "blue"
+        "background": "seaBreeze"
     },
     {
         "id": "narwhal",
         "name": "narhwal",
-        "background": "blue"
+        "background": "sunsetGlow"
     },
     {
         "id": "owl",
         "name": "owl",
-        "background": "blue"
+        "background": "aurora"
     },
     {
         "id": "panda",
         "name": "panda",
-        "background": "blue"
+        "background": "cherryBlossoms"
     },
     {
         "id": "parrot",
         "name": "parrot",
-        "background": "blue"
+        "background": "nightSky"
     },
     {
         "id": "pig",
         "name": "pig",
-        "background": "blue"
+        "background": "winterMorning"
     },
     {
         "id": "rabbit",
         "name": "rabbit",
-        "background": "blue"
+        "background": "sunnyDay"
     },
     {
         "id": "rhino",
         "name": "rhino",
-        "background": "blue"
+        "background": "moonLight"
     },
     {
         "id": "sloth",
         "name": "sloth",
-        "background": "blue"
+        "background": "freshLime"
     },
     {
         "id": "snake",
         "name": "snake",
-        "background": "blue"
+        "background": "passionFruit"
     },
     {
         "id": "walrus",
         "name": "walrus",
-        "background": "blue"
+        "background": "icyBlue"
     },
     {
         "id": "whale",
         "name": "whale",
-        "background": "blue"
+        "background": "goldenHour"
     },
     {
         "id": "zebra",
         "name": "zebra",
-        "background": "blue"
+        "background": "autumnLeaves"
     }
 ]

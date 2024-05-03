@@ -17,9 +17,7 @@ struct StartingView: View {
                         .font(.title)
                     NavigationLink(destination: CountingView()) {
                         Text("Start")
-
                     }
-
                 }
             }
         }

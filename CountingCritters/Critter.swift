@@ -12,6 +12,10 @@ struct Critter: Decodable, Identifiable {
     let name: String
     let background: String
 
+//    var backgrounGradient: Any {
+//        return allGradients[background]
+//    }
+
     static let allCritters = Bundle.main.decode("Critters.json", as: [Critter].self)
     static let example = allCritters[0]
 }
