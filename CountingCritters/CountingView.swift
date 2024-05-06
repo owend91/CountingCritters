@@ -22,20 +22,32 @@ struct CountingView: View {
             gradientMap[vm.currentCritter.background]
                 .ignoresSafeArea()
             VStack {
-                Text("Find ^[\(vm.pageCount) \(vm.currentCritter.name)](inflect: true)")
-                    .background(.blue)
+                HStack {
+                    Spacer()
+                    Text("\(vm.pageIsDone ? "You found" : "Find") ^[\(vm.pageCount) \(vm.currentCritter.name)](inflect: true)\(vm.pageIsDone ? "!" : "")")
+                        .font(.title)
+                        .bold()
+                        .blendMode(.luminosity)
+                    Spacer()
+                }
+                .padding(.bottom)
+                .background(.thinMaterial)
                 Spacer()
             }
 
             LazyVGrid(columns: columns) {
-            
+
                 ForEach(0...8, id: \.self) { count in
                     if vm.layout.contains(count) {
                         CritterView(vm: $vm, critterViewCount: count, imageTranslation: vm.imageTranslations[count])
                             .onTapGesture {
-                                vm.currentTaps.append(count)
-                                vm.tapCount += 1
-                                animate.toggle()
+                                if !vm.currentTaps.contains(count) {
+                                    vm.tapCount += 1
+                                    animate.toggle()
+                                    withAnimation {
+                                        vm.tapDictionary[count] = vm.tapCount
+                                    }
+                                }
                             }
 
                     }
@@ -52,16 +64,6 @@ struct CountingView: View {
                     .foregroundStyle(.white)
                     .offset(y: countOffset)
                     .shadow(radius: 5)
-
-
-
-//                } else {
-//                    Text("\(vm.tapCount)")
-//                        .font(.system(size: 70))
-//                        .scaleEffect(animate ? 4 : 1)
-//                        .animation(.spring(), value: animate)
-//                        .foregroundStyle(.white)
-//                }
 
             }
             .onChange(of: vm.tapCount) {
@@ -115,23 +117,45 @@ struct CritterView: View {
     let imageTranslation: ImageTranslation
 
     var body: some View {
-        Image(vm.currentCritter.id)
-            .resizable()
-            .scaledToFit()
-            .frame(maxWidth: .infinity, minHeight: 230, maxHeight: .infinity)
-            .opacity(vm.currentTaps.contains(critterViewCount) ? 0.5 : 1.0) // Dim the critter if it's already tapped
-            .scaleEffect(imageTranslation.scale)
-            .offset(x: imageTranslation.x, y: imageTranslation.y)
-            .rotationEffect(.degrees(imageTranslation.rotation))
-            .shadow(radius: imageTranslation.shadow)
-            .onAppear {
-                print("Count: \(critterViewCount)")
-                print("Scale: \(imageTranslation.scale)")
-                print("X Offset: \(imageTranslation.x)")
-                print("Y Offset: \(imageTranslation.y)")
-                print("Shadow: \(imageTranslation.shadow)")
+        ZStack {
+            Image(vm.currentCritter.id)
+                .resizable()
+                .scaledToFit()
+                .overlay(vm.currentTaps.contains(critterViewCount) ? Color.black.blendMode(.sourceAtop) : Color.clear.blendMode(.overlay))
+                .frame(maxWidth: .infinity, minHeight: 230, maxHeight: .infinity)
+                .opacity(vm.currentTaps.contains(critterViewCount) ? 0.5 : 1.0) // Dim the critter if it's already tapped
+                .scaleEffect(imageTranslation.scale)
+                .rotationEffect(.degrees(imageTranslation.rotation))
+                .shadow(radius: imageTranslation.shadow)
+                .onAppear {
+                    print("Count: \(critterViewCount)")
+                    print("Scale: \(imageTranslation.scale)")
+                    print("X Offset: \(imageTranslation.x)")
+                    print("Y Offset: \(imageTranslation.y)")
+                    print("Shadow: \(imageTranslation.shadow)")
+
+                }
+            if vm.currentTaps.contains(critterViewCount) {
+                Text("\(vm.tapDictionary[critterViewCount] ?? 0)")
+                    .font(.title3)
+                    .scaleEffect(imageTranslation.scale * 2)
+                    .bold()
+                    .foregroundStyle(.thinMaterial)
+                    .shadow(radius: 10)
+                    .frame(width: 20, height: 20)
+            } else {
+                Text("")
+                    .font(.title3)
+                    .scaleEffect(imageTranslation.scale * 2)
+                    .bold()
+                    .foregroundStyle(.white)
+                    .shadow(radius: 10)
+                    .frame(width: 20, height: 20)
 
             }
+        }
+        .offset(x: imageTranslation.x, y: imageTranslation.y)
+
     }
 }
 

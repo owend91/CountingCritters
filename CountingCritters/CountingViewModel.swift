@@ -14,7 +14,15 @@ class CountingViewModel {
 
     var layout: [Int] = []
     var imageTranslations: [ImageTranslation] = []
-    var currentTaps: [Int] = []
+
+    var tapDictionary: [Int: Int] = [:]
+    var currentTaps: [Int] {
+        Array(tapDictionary.keys)
+    }
+
+    var pageIsDone: Bool {
+        tapCount == pageCount
+    }
 
     var critterPages: [Critter] = []
     var currentCritter: Critter {
@@ -26,7 +34,7 @@ class CountingViewModel {
     }
 
     func startGame() {
-        currentTaps.removeAll()
+        tapDictionary.removeAll()
         pageCount = 1
         tapCount = 0
         determineLayout()
@@ -36,7 +44,7 @@ class CountingViewModel {
     }
 
     func nextPage() {
-        currentTaps.removeAll()
+        tapDictionary.removeAll()
         pageCount += 1
         tapCount = 0
         determineLayout()
