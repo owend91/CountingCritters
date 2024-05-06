@@ -9,7 +9,9 @@ import SwiftUI
 
 struct CountingView: View {
     @State var vm = CountingViewModel()
-
+    @State private var animate = false
+    @State private var countOffset = 300.0
+    @State private var countScaleEffect = 1.0
     let columns = [
         GridItem(.flexible()),
             GridItem(.flexible()),
@@ -20,7 +22,7 @@ struct CountingView: View {
             gradientMap[vm.currentCritter.background]
                 .ignoresSafeArea()
             VStack {
-                Text("Tap on ^[\(vm.pageCount) \(vm.currentCritter.name)](inflect: true)")
+                Text("Find ^[\(vm.pageCount) \(vm.currentCritter.name)](inflect: true)")
                     .background(.blue)
                 Spacer()
             }
@@ -33,6 +35,7 @@ struct CountingView: View {
                             .onTapGesture {
                                 vm.currentTaps.append(count)
                                 vm.tapCount += 1
+                                animate.toggle()
                             }
 
                     }
@@ -43,17 +46,57 @@ struct CountingView: View {
 
             VStack {
 
-                Spacer()
+                Text("\(vm.tapCount)")
+                    .font(.system(size: 70))
+                    .scaleEffect(countScaleEffect)
+                    .foregroundStyle(.white)
+                    .offset(y: countOffset)
+                    .shadow(radius: 5)
 
-                if vm.tapCount == vm.pageCount {
-                    Button("Next") {
-                        vm.nextPage()
+
+
+//                } else {
+//                    Text("\(vm.tapCount)")
+//                        .font(.system(size: 70))
+//                        .scaleEffect(animate ? 4 : 1)
+//                        .animation(.spring(), value: animate)
+//                        .foregroundStyle(.white)
+//                }
+
+            }
+            .onChange(of: vm.tapCount) {
+                if vm.tapCount != 0 {
+                    countOffset = 0
+                    countScaleEffect = 2
+                    withAnimation {
+                        countOffset = 300
+                        countScaleEffect = 1
                     }
-                    .buttonStyle(BorderedButtonStyle())
-                } else {
-                    Text("\(vm.tapCount)")
-                        .foregroundStyle(.white)
                 }
+            }
+
+            if vm.tapCount == vm.pageCount {
+                Color.black
+                    .opacity(0.1)
+                    .ignoresSafeArea()
+                VStack {
+                    Text("You found ^[\(vm.pageCount) \(vm.currentCritter.name)](inflect: true)!")
+                        .multilineTextAlignment(.center)
+                    Button {
+                        vm.nextPage()
+                    } label: {
+                        Text("Next")
+                            .padding()
+                            .background(.ultraThinMaterial)
+                            .foregroundStyle(.white)
+                    }
+
+                }
+                .padding(.vertical)
+                .frame(width: 300, height: 200)
+                .background(.ultraThinMaterial)
+                .clipShape(RoundedRectangle(cornerRadius: 5.0))
+                .shadow(radius: 5)
 
             }
         }
@@ -62,6 +105,7 @@ struct CountingView: View {
             print("On Appear")
             vm.startGame()
         }
+
     }
 }
 

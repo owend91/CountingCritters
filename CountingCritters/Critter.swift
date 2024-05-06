@@ -18,4 +18,5 @@ struct Critter: Decodable, Identifiable {
 
     static let allCritters = Bundle.main.decode("Critters.json", as: [Critter].self)
     static let example = allCritters[0]
+    
 }
