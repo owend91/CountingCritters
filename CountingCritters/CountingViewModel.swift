@@ -48,8 +48,6 @@ class CountingViewModel {
         pageCount += 1
         tapCount = 0
         determineLayout()
-        print("page count: \(pageCount)")
-        print("layout: \(layout)")
     }
 
     private func determineLayout() {
@@ -75,7 +73,6 @@ class CountingViewModel {
             layout.append(gridLocation)
             imageTranslations[gridLocation] = translation
         }
-
-        print(imageTranslations)
+        print("📈 layout: \(layout)")
     }
 }

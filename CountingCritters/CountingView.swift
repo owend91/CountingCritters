@@ -42,6 +42,9 @@ struct CountingView: View {
                             .sensoryFeedback(.success, trigger: vm.tapCount) { _, _ in
                                 vm.tapCount != 0
                             }
+                    } 
+                    else {
+                        Text(" ")
                     }
                 }
 
