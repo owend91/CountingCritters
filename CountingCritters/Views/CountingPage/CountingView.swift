@@ -29,7 +29,7 @@ struct CountingView: View {
 
                 ForEach(0...8, id: \.self) { count in
                     if vm.layout.contains(count) {
-                        CritterView(vm: $vm, critterViewCount: count, imageTranslation: vm.imageTranslations[count])
+                        CritterView(vm: $vm, critterLocation: count, imageTranslation: vm.imageTranslations[count])
                             .onTapGesture {
                                 if !vm.currentTaps.contains(count) {
                                     vm.tapCount += 1
@@ -138,51 +138,6 @@ struct CountingView: View {
             print("On Appear")
             vm.startGame()
         }
-
-    }
-}
-
-struct CritterView: View {
-    @Binding var vm: CountingViewModel
-    let critterViewCount: Int
-    let imageTranslation: ImageTranslation
-
-    var body: some View {
-        ZStack {
-            Image(vm.currentCritter.id)
-                .resizable()
-                .scaledToFit()
-                .overlay(vm.currentTaps.contains(critterViewCount) ? Color.black.blendMode(.sourceAtop) : Color.clear.blendMode(.overlay))
-                .frame(maxWidth: .infinity, minHeight: 230, maxHeight: .infinity)
-                .opacity(vm.currentTaps.contains(critterViewCount) ? 0.5 : 1.0) // Dim the critter if it's already tapped
-                .scaleEffect(imageTranslation.scale)
-                .rotationEffect(.degrees(imageTranslation.rotation))
-                .shadow(radius: imageTranslation.shadow)
-                .onAppear {
-                    print("Count: \(critterViewCount)")
-                    print("Scale: \(imageTranslation.scale)")
-                    print("X Offset: \(imageTranslation.x)")
-                    print("Y Offset: \(imageTranslation.y)")
-                    print("Shadow: \(imageTranslation.shadow)")
-
-                }
-            if vm.currentTaps.contains(critterViewCount) {
-                Text("\(vm.tapDictionary[critterViewCount] ?? 0)")
-                    .font(.title3)
-                    .scaleEffect(imageTranslation.scale * 2)
-                    .bold()
-                    .foregroundStyle(.white.opacity(0.7))
-                    .shadow(radius: 10)
-                    .frame(width: 20, height: 20)
-            } else {
-                //This else keeps the spacing when the critter has not been tapped yet
-                //Otherwise, after a tap, the critters may shift slightly
-                Text("")
-                    .frame(width: 20, height: 20)
-
-            }
-        }
-        .offset(x: imageTranslation.x, y: imageTranslation.y)
 
     }
 }

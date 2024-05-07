@@ -75,4 +75,8 @@ class CountingViewModel {
         }
         print("📈 layout: \(layout)")
     }
+
+    func hasCritterBeenTapped(_ critterLocation: Int) -> Bool {
+        currentTaps.contains(critterLocation)
+    }
 }
