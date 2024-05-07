@@ -10,7 +10,9 @@ import SwiftUI
 struct CountingView: View {
     @State var vm = CountingViewModel()
     @State private var animate = false
-    @State private var countOffset = 300.0
+    @State private var countYOffset = 355.0
+    @State private var countXOffset = 0.0
+
     @State private var countScaleEffect = 1.0
     let columns = [
         GridItem(.flexible()),
@@ -21,19 +23,7 @@ struct CountingView: View {
         ZStack {
             gradientMap[vm.currentCritter.background]
                 .ignoresSafeArea()
-            VStack {
-                HStack {
-                    Spacer()
-                    Text("\(vm.pageIsDone ? "You found" : "Find") ^[\(vm.pageCount) \(vm.currentCritter.name)](inflect: true)\(vm.pageIsDone ? "!" : "")")
-                        .font(.title)
-                        .bold()
-                        .blendMode(.luminosity)
-                    Spacer()
-                }
-                .padding(.bottom)
-                .background(.thinMaterial)
-                Spacer()
-            }
+
 
             LazyVGrid(columns: columns) {
 
@@ -57,51 +47,87 @@ struct CountingView: View {
             .padding(.horizontal)
 
             VStack {
+                HStack {
+                    Spacer()
+                    Text("\(vm.pageIsDone ? "You found" : "Find") ^[\(vm.pageCount) \(vm.currentCritter.name)](inflect: true)\(vm.pageIsDone ? "!" : "")")
+                        .font(.title)
+                        .scaleEffect(1.2)
+                        .bold()
+                        .foregroundStyle(.white)
+                        .shadow(radius: 5)
+
+                    Spacer()
+                }
+                .padding(.bottom)
+                .background(.ultraThinMaterial.opacity(0.7))
+                Spacer()
+            }
+            .shadow(radius: 10)
+
+            ZStack {
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        Text(" ")
+                            .font(.title)
+                            .bold()
+
+                        Spacer()
+
+                    }
+                    .padding()
+                    .background(.ultraThinMaterial.opacity(0.7))
+
+                }
+                .shadow(radius: 10)
 
                 Text("\(vm.tapCount)")
                     .font(.system(size: 70))
                     .scaleEffect(countScaleEffect)
                     .foregroundStyle(.white)
-                    .offset(y: countOffset)
+                    .offset(x: countXOffset, y: countYOffset)
                     .shadow(radius: 5)
 
+                if vm.pageIsDone {
+                    Button {
+                        countXOffset = 0
+                        if vm.pageCount == 9 {
+                            vm.startGame()
+                        } else {
+                            vm.nextPage()
+                        }
+
+                    } label: {
+                        HStack {
+                            Spacer()
+                            Text(vm.pageCount == 9 ? "Start Over!" : "Next")
+                                .font(.system(size: 55))
+                                .foregroundStyle(.white)
+                                .bold()
+                                .shadow(radius: 5)
+                                .padding(.trailing, 40)
+                        }
+                    }
+                    .offset(y: 355.0)
+                }
             }
             .onChange(of: vm.tapCount) {
                 if vm.tapCount != 0 {
-                    countOffset = 0
+                    countYOffset = 0
                     countScaleEffect = 2
+                    countXOffset = 0
                     withAnimation {
-                        countOffset = 300
+                        countYOffset = 355
                         countScaleEffect = 1
+                        if vm.pageIsDone {
+                            countXOffset = -145
+                        }
                     }
                 }
-            }
-
-            if vm.tapCount == vm.pageCount {
-                Color.black
-                    .opacity(0.1)
-                    .ignoresSafeArea()
-                VStack {
-                    Text("You found ^[\(vm.pageCount) \(vm.currentCritter.name)](inflect: true)!")
-                        .multilineTextAlignment(.center)
-                    Button {
-                        vm.nextPage()
-                    } label: {
-                        Text("Next")
-                            .padding()
-                            .background(.ultraThinMaterial)
-                            .foregroundStyle(.white)
-                    }
-
-                }
-                .padding(.vertical)
-                .frame(width: 300, height: 200)
-                .background(.ultraThinMaterial)
-                .clipShape(RoundedRectangle(cornerRadius: 5.0))
-                .shadow(radius: 5)
-
             }
         }
+        .preferredColorScheme(.dark)
         .navigationBarBackButtonHidden(true)
         .onAppear {
             print("On Appear")
@@ -140,16 +166,13 @@ struct CritterView: View {
                     .font(.title3)
                     .scaleEffect(imageTranslation.scale * 2)
                     .bold()
-                    .foregroundStyle(.thinMaterial)
+                    .foregroundStyle(.white.opacity(0.7))
                     .shadow(radius: 10)
                     .frame(width: 20, height: 20)
             } else {
+                //This else keeps the spacing when the critter has not been tapped yet
+                //Otherwise, after a tap, the critters may shift slightly
                 Text("")
-                    .font(.title3)
-                    .scaleEffect(imageTranslation.scale * 2)
-                    .bold()
-                    .foregroundStyle(.white)
-                    .shadow(radius: 10)
                     .frame(width: 20, height: 20)
 
             }

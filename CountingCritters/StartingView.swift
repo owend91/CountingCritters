@@ -47,7 +47,6 @@ struct StartingView: View {
                             .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
                             .transition(.slide)
 
-
                         Image(Critter.allCritters[rightImageIndex].id)
                             .resizable()
                             .scaledToFit()
@@ -66,7 +65,6 @@ struct StartingView: View {
                             centerImageIndex = (self.centerImageIndex + 1) % Critter.allCritters.count
                             rightImageIndex = (self.rightImageIndex + 1) % Critter.allCritters.count
                         }
-
                     }
 
                     Spacer()
@@ -84,9 +82,9 @@ struct StartingView: View {
                         .background(Color.darkNavy)
                         .foregroundStyle(.yellow)
                     }
-
                 }
             }
+            .preferredColorScheme(.light)
         }
     }
 }
