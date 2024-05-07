@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63BA92352BEAB927005B8E36 /* CountingCrittersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BA92342BEAB927005B8E36 /* CountingCrittersTests.swift */; };
 		63F607452BE187A20000E44B /* CountingCrittersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F607442BE187A20000E44B /* CountingCrittersApp.swift */; };
 		63F607492BE187A40000E44B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63F607482BE187A40000E44B /* Assets.xcassets */; };
 		63F6074C2BE187A40000E44B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63F6074B2BE187A40000E44B /* Preview Assets.xcassets */; };
@@ -20,7 +21,19 @@
 		63F607632BE536FF0000E44B /* ImageTranslation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F607622BE536FF0000E44B /* ImageTranslation.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		63BA92362BEAB927005B8E36 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63F607392BE187A20000E44B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63F607402BE187A20000E44B;
+			remoteInfo = CountingCritters;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		63BA92322BEAB927005B8E36 /* CountingCrittersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountingCrittersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		63BA92342BEAB927005B8E36 /* CountingCrittersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountingCrittersTests.swift; sourceTree = "<group>"; };
 		63F607412BE187A20000E44B /* CountingCritters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountingCritters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63F607442BE187A20000E44B /* CountingCrittersApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountingCrittersApp.swift; sourceTree = "<group>"; };
 		63F607482BE187A40000E44B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -36,6 +49,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		63BA922F2BEAB927005B8E36 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63F6073E2BE187A20000E44B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -46,10 +66,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		63BA92332BEAB927005B8E36 /* CountingCrittersTests */ = {
+			isa = PBXGroup;
+			children = (
+				63BA92342BEAB927005B8E36 /* CountingCrittersTests.swift */,
+			);
+			path = CountingCrittersTests;
+			sourceTree = "<group>";
+		};
 		63F607382BE187A20000E44B = {
 			isa = PBXGroup;
 			children = (
 				63F607432BE187A20000E44B /* CountingCritters */,
+				63BA92332BEAB927005B8E36 /* CountingCrittersTests */,
 				63F607422BE187A20000E44B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				63F607412BE187A20000E44B /* CountingCritters.app */,
+				63BA92322BEAB927005B8E36 /* CountingCrittersTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -91,6 +121,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		63BA92312BEAB927005B8E36 /* CountingCrittersTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63BA92382BEAB927005B8E36 /* Build configuration list for PBXNativeTarget "CountingCrittersTests" */;
+			buildPhases = (
+				63BA922E2BEAB927005B8E36 /* Sources */,
+				63BA922F2BEAB927005B8E36 /* Frameworks */,
+				63BA92302BEAB927005B8E36 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				63BA92372BEAB927005B8E36 /* PBXTargetDependency */,
+			);
+			name = CountingCrittersTests;
+			productName = CountingCrittersTests;
+			productReference = 63BA92322BEAB927005B8E36 /* CountingCrittersTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		63F607402BE187A20000E44B /* CountingCritters */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63F6074F2BE187A40000E44B /* Build configuration list for PBXNativeTarget "CountingCritters" */;
@@ -118,6 +166,10 @@
 				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
+					63BA92312BEAB927005B8E36 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 63F607402BE187A20000E44B;
+					};
 					63F607402BE187A20000E44B = {
 						CreatedOnToolsVersion = 15.3;
 					};
@@ -137,11 +189,19 @@
 			projectRoot = "";
 			targets = (
 				63F607402BE187A20000E44B /* CountingCritters */,
+				63BA92312BEAB927005B8E36 /* CountingCrittersTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		63BA92302BEAB927005B8E36 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63F6073F2BE187A20000E44B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -155,6 +215,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		63BA922E2BEAB927005B8E36 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63BA92352BEAB927005B8E36 /* CountingCrittersTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63F6073D2BE187A20000E44B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -172,7 +240,51 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		63BA92372BEAB927005B8E36 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63F607402BE187A20000E44B /* CountingCritters */;
+			targetProxy = 63BA92362BEAB927005B8E36 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		63BA92392BEAB927005B8E36 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PGC4FV57FE;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.david.CountingCritters.CountingCrittersTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CountingCritters.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CountingCritters";
+			};
+			name = Debug;
+		};
+		63BA923A2BEAB927005B8E36 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PGC4FV57FE;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.david.CountingCritters.CountingCrittersTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CountingCritters.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CountingCritters";
+			};
+			name = Release;
+		};
 		63F6074D2BE187A40000E44B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -353,6 +465,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		63BA92382BEAB927005B8E36 /* Build configuration list for PBXNativeTarget "CountingCrittersTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63BA92392BEAB927005B8E36 /* Debug */,
+				63BA923A2BEAB927005B8E36 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		63F6073C2BE187A20000E44B /* Build configuration list for PBXProject "CountingCritters" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
