@@ -20,6 +20,12 @@ extension Color {
     static let jungleGreen = Color(red: 0.0, green: 0.5, blue: 0.2) // Custom jungle green
     static let canopyGreen = Color(red: 0.2, green: 0.6, blue: 0.3) // Custom canopy green
     static let mossGreen = Color(red: 0.3, green: 0.7, blue: 0.4) // Custom moss green
+    static let candyRed = Color(red: 1.0, green: 0.3, blue: 0.3) // Custom candy red
+    static let candyWhite = Color(red: 1.0, green: 1.0, blue: 1.0) // Custom candy white
+    static let amberYellow = Color(red: 1.0, green: 0.75, blue: 0.25) // Custom amber yellow
+    static let sunsetOrange = Color(red: 1.0, green: 0.55, blue: 0.0) // Custom sunset orange
+    static let nebulaPurple = Color(red: 0.7, green: 0.4, blue: 0.9) // Custom nebula purple
+    static let nebulaPink = Color(red: 1.0, green: 0.6, blue: 0.8) // Custom nebula pink
 }
 
 let sunset = LinearGradient(gradient: Gradient(colors: [.pink, .orange]), startPoint: .top, endPoint: .bottom)
@@ -58,7 +64,9 @@ let autumnLeaves = LinearGradient(gradient: Gradient(colors: [.red, .orange, .ye
 
 let coralReef = LinearGradient(gradient: Gradient(colors: [.coralBlue, .coralPink]), startPoint: .top, endPoint: .bottom)
 let jungle = LinearGradient(gradient: Gradient(colors: [.jungleGreen, .canopyGreen, .mossGreen]), startPoint: .top, endPoint: .bottom)
-
+let candyCane = LinearGradient(gradient: Gradient(colors: [.candyRed, .candyWhite]), startPoint: .leading, endPoint: .trailing)
+let amberSunset = RadialGradient(gradient: Gradient(colors: [.amberYellow, .sunsetOrange]), center: .center, startRadius: 2, endRadius: 500)
+let pinkNebula = RadialGradient(gradient: Gradient(colors: [.nebulaPurple, .nebulaPink]), center: .center, startRadius: 2, endRadius: 500)
 
 let allGradients = [
     sunset,
@@ -92,7 +100,10 @@ let allGradients = [
     goldenHour,
     autumnLeaves,
     coralReef,
-    jungle
+    jungle,
+    candyCane,
+    amberSunset,
+    pinkNebula
 ] as [Any]
 
 let gradientMap = [
@@ -127,7 +138,9 @@ let gradientMap = [
     "goldenHour" : AnyView(goldenHour),
     "autumnLeaves" : AnyView(autumnLeaves),
     "coralReef" : AnyView(autumnLeaves),
-    "jungle" : AnyView(jungle)
-
+    "jungle" : AnyView(jungle),
+    "candyCane" : AnyView(candyCane),
+    "amberSunset" : AnyView(amberSunset),
+    "pinkNebula" : AnyView(pinkNebula)
 ] as [String : AnyView]
 

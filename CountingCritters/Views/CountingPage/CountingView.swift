@@ -8,6 +8,18 @@
 import SwiftUI
 
 struct CountingView: View {
+    @Environment(\.accessibilityReduceMotion) var reduceMotion
+    @AppStorage("allowAnimation") var allowAnimation: Bool = true
+    @AppStorage("manuallySetAnimation") var manuallySetAnimation: Bool = false
+
+    var showAnimation: Bool {
+        if manuallySetAnimation {
+            return allowAnimation
+        } else {
+            return !reduceMotion
+        }
+    }
+
     @State var vm = CountingViewModel()
     @State private var animate = false
     @State private var countYOffset = 355.0
@@ -122,7 +134,15 @@ struct CountingView: View {
                     countYOffset = 0
                     countScaleEffect = 2
                     countXOffset = 0
-                    withAnimation {
+                    if showAnimation {
+                        withAnimation {
+                            countYOffset = 355
+                            countScaleEffect = 1
+                            if vm.pageIsDone {
+                                countXOffset = -145
+                            }
+                        }
+                    } else {
                         countYOffset = 355
                         countScaleEffect = 1
                         if vm.pageIsDone {

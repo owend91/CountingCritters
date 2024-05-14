@@ -12,10 +12,22 @@ extension Color {
 }
 
 struct StartingView: View {
+    @Environment(\.accessibilityReduceMotion) var reduceMotion
+    @AppStorage("allowAnimation") var allowAnimation: Bool = true
+    @AppStorage("manuallySetAnimation") var manuallySetAnimation: Bool = false
+
+    var showAnimation: Bool {
+        if manuallySetAnimation {
+            return allowAnimation
+        } else {
+            return !reduceMotion
+        }
+    }
+
     @State var leftImageIndex = 0
     @State var centerImageIndex = 1 // Index of the currently displayed image
     @State var rightImageIndex = 2
-    @State var displaySettings = false
+    @State var showingSettings = false
 
 
     let imageSwitchTimer = Timer.publish(every: 2, on: .main, in: .common)
@@ -28,13 +40,16 @@ struct StartingView: View {
                     HStack {
                         Spacer()
                         Button {
-
+                            showingSettings.toggle()
                         } label: {
                             Image(systemName: "info.circle")
                                 .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                                 .foregroundStyle(.regularMaterial)
                                 .padding(.trailing)
                         }
+                    }
+                    .sheet(isPresented: $showingSettings) {
+                        SettingsView()
                     }
                     Spacer()
 
@@ -72,11 +87,16 @@ struct StartingView: View {
                     .background(.ultraThinMaterial.opacity(0.2))
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     .onReceive(imageSwitchTimer) { _ in
-                        withAnimation(.spring()) {
-                            leftImageIndex = (self.leftImageIndex + 1) % Critter.allCritters.count
-                            centerImageIndex = (self.centerImageIndex + 1) % Critter.allCritters.count
-                            rightImageIndex = (self.rightImageIndex + 1) % Critter.allCritters.count
+                        if showAnimation {
+                            withAnimation(.spring()) {
+                                leftImageIndex = (self.leftImageIndex + 1) % Critter.allCritters.count
+                                centerImageIndex = (self.centerImageIndex + 1) % Critter.allCritters.count
+                                rightImageIndex = (self.rightImageIndex + 1) % Critter.allCritters.count
+                            }
                         }
+                    }
+                    .onDisappear {
+                        imageSwitchTimer.upstream.connect().cancel()
                     }
 
                     Spacer()
