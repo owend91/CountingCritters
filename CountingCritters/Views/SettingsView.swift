@@ -8,25 +8,68 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @Environment(\.dismiss) private var dismiss
     @AppStorage("allowAnimation") var allowAnimation: Bool = true
     @AppStorage("manuallySetAnimation") var manuallySetAnimation: Bool =  false
-    var body: some View {
-        ZStack {
-            goldenHour.ignoresSafeArea()
+    var restartGame: (() -> Void)?
+//    var showRestartButton = false
 
-            VStack {
-                Form {
+    var body: some View {
+        Form {
+            Section {
+                VStack {
                     Toggle("Allow Animation", isOn: $allowAnimation)
-                        .onChange(of: allowAnimation) { 
+                        .onChange(of: allowAnimation) {
                             manuallySetAnimation = true
                         }
                 }
-                .scrollContentBackground(.hidden)
+                .listRowBackground(Color.clear)
+                .padding()
+                .background(.thinMaterial)
+                .mask {
+                    RoundedRectangle(cornerRadius: 10)
+                }
+            }
+            Section {
+                VStack {
+                    HStack {
+                        Spacer()
+                        Text("Icons used under Creative Commons CC0. Created by [Kenney](https://kenney.nl/assets/animal-pack-redux)")
+                            .multilineTextAlignment(.center)
+                            .font(.footnote)
+                        Spacer()
+                    }
+                }
+                .listRowBackground(Color.clear)
+                .padding()
+                .background(.thinMaterial)
+                .mask {
+                    RoundedRectangle(cornerRadius: 10)
+                }
+            }
+            if let restartGame {
+                Section {
+                    Button(role: .destructive) {
+                        restartGame()
+                        dismiss()
+                    } label: {
+                        HStack {
+                            Spacer()
+                            Text("Restart!")
+                            Spacer()
+                        }
+                    }
+                    .buttonStyle(BorderedProminentButtonStyle())
+                    .listRowBackground(Color.clear)
+                }
             }
         }
+        .listSectionSpacing(.leastNonzeroMagnitude)
+        .scrollContentBackground(.hidden)
     }
+
 }
 
 #Preview {
-    SettingsView()
+    SettingsView() {}
 }

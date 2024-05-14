@@ -24,6 +24,7 @@ struct CountingView: View {
     @State private var animate = false
     @State private var countYOffset = 355.0
     @State private var countXOffset = 0.0
+    @State var showingSettings = false
 
     @State private var countScaleEffect = 1.0
     let columns = [
@@ -64,19 +65,58 @@ struct CountingView: View {
             .padding(.horizontal)
 
             VStack {
-                HStack {
-                    Spacer()
-                    Text("\(vm.pageIsDone ? "You found" : "Find") ^[\(vm.pageCount) \(vm.currentCritter.name)](inflect: true)\(vm.pageIsDone ? "!" : "")")
-                        .font(.title)
-                        .scaleEffect(1.2)
-                        .bold()
-                        .foregroundStyle(.white)
-                        .shadow(radius: 5)
+                ZStack {
+                    HStack {
+                        Spacer()
+                        Text("\(vm.pageIsDone ? "You found" : "Find") ^[\(vm.pageCount) \(vm.currentCritter.name)](inflect: true)\(vm.pageIsDone ? "!" : "")")
+                            .font(.title)
+                            .scaleEffect(1.2)
+                            .bold()
+                            .foregroundStyle(.white)
+                            .shadow(radius: 5)
+                            .opacity(0)
 
-                    Spacer()
+                        Spacer()
+                    }
+                    .padding(.bottom)
+                    .background(.ultraThinMaterial.opacity(0.7))
+                    HStack {
+                        Spacer()
+                        Text("\(vm.pageIsDone ? "You found" : "Find") ^[\(vm.pageCount) \(vm.currentCritter.name)](inflect: true)\(vm.pageIsDone ? "!" : "")")
+                            .font(.title)
+                            .scaleEffect(1.2)
+                            .bold()
+                            .foregroundStyle(.white)
+                            .shadow(radius: 5)
+
+                        Spacer()
+                    }
+                    .zIndex(1)
+
+                    HStack {
+                        Spacer()
+                        Button {
+                            showingSettings.toggle()
+                        } label: {
+                            Image(systemName: "info.circle")
+                                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                                .foregroundStyle(.regularMaterial)
+                                .padding(.trailing)
+                                .shadow(radius: 10)
+                                .opacity(0.5)
+                        }
+                        .offset(y: -30)
+                        .sheet(isPresented: $showingSettings) {
+                            SettingsView() {
+                                vm.startGame()
+                            }
+                            .presentationBackground(.ultraThinMaterial)
+                            .presentationDetents([.fraction(0.4)])
+                            .presentationDragIndicator(.visible)
+                        }
+                    }
+                    .zIndex(vm.pageIsDone ? 0 : 2)
                 }
-                .padding(.bottom)
-                .background(.ultraThinMaterial.opacity(0.7))
                 Spacer()
             }
             .shadow(radius: 10)

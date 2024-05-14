@@ -50,6 +50,9 @@ struct StartingView: View {
                     }
                     .sheet(isPresented: $showingSettings) {
                         SettingsView()
+                            .presentationBackground(.ultraThinMaterial)
+                            .presentationDetents([.fraction(0.3)])
+                            .presentationDragIndicator(.visible)
                     }
                     Spacer()
 
