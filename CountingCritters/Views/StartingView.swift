@@ -15,6 +15,7 @@ struct StartingView: View {
     @State var leftImageIndex = 0
     @State var centerImageIndex = 1 // Index of the currently displayed image
     @State var rightImageIndex = 2
+    @State var displaySettings = false
 
 
     let imageSwitchTimer = Timer.publish(every: 2, on: .main, in: .common)
@@ -24,6 +25,17 @@ struct StartingView: View {
             ZStack {
                 goldenHour.opacity(0.5).ignoresSafeArea()
                 VStack {
+                    HStack {
+                        Spacer()
+                        Button {
+
+                        } label: {
+                            Image(systemName: "info.circle")
+                                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                                .foregroundStyle(.regularMaterial)
+                                .padding(.trailing)
+                        }
+                    }
                     Spacer()
 
                     Text("Counting Critters")

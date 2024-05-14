@@ -46,7 +46,9 @@ struct CritterView: View {
 }
 
 #Preview {
-    @State var vm = CountingViewModel()
-    vm.startGame()
-    return CritterView(vm: $vm, critterLocation: 0, imageTranslation: ImageTranslation())
+    var translation = ImageTranslation()
+    translation.scale = 0.65
+    translation.rotation = 40.0
+
+    return CritterView(vm: .constant(CountingViewModel()), critterLocation: 0, imageTranslation: translation)
 }

@@ -8,11 +8,18 @@
 import Foundation
 import SwiftUI
 
+//dislike starlight
+
 extension Color {
     static let customMagenta = Color(red: 1.0, green: 0.0, blue: 1.0) // RGB for magenta
     static let customDarkGray = Color(red: 0.33, green: 0.33, blue: 0.33) // Custom dark gray color
     static let customLightGray = Color(red: 0.75, green: 0.75, blue: 0.75) // Custom light gray color
     static let customLime = Color(red: 0.75, green: 1.0, blue: 0.0) // Custom lime color
+    static let coralBlue = Color(red: 0.0, green: 0.5, blue: 0.8) // Custom coral blue
+    static let coralPink = Color(red: 1.0, green: 0.4, blue: 0.6) // Custom coral pink
+    static let jungleGreen = Color(red: 0.0, green: 0.5, blue: 0.2) // Custom jungle green
+    static let canopyGreen = Color(red: 0.2, green: 0.6, blue: 0.3) // Custom canopy green
+    static let mossGreen = Color(red: 0.3, green: 0.7, blue: 0.4) // Custom moss green
 }
 
 let sunset = LinearGradient(gradient: Gradient(colors: [.pink, .orange]), startPoint: .top, endPoint: .bottom)
@@ -49,6 +56,10 @@ let icyBlue = LinearGradient(gradient: Gradient(colors: [.cyan, .white]), startP
 let goldenHour = LinearGradient(gradient: Gradient(colors: [.yellow, .orange]), startPoint: .top, endPoint: .bottom)
 let autumnLeaves = LinearGradient(gradient: Gradient(colors: [.red, .orange, .yellow]), startPoint: .bottom, endPoint: .top)
 
+let coralReef = LinearGradient(gradient: Gradient(colors: [.coralBlue, .coralPink]), startPoint: .top, endPoint: .bottom)
+let jungle = LinearGradient(gradient: Gradient(colors: [.jungleGreen, .canopyGreen, .mossGreen]), startPoint: .top, endPoint: .bottom)
+
+
 let allGradients = [
     sunset,
     oceanBlue,
@@ -79,7 +90,9 @@ let allGradients = [
     passionFruit,
     icyBlue,
     goldenHour,
-    autumnLeaves
+    autumnLeaves,
+    coralReef,
+    jungle
 ] as [Any]
 
 let gradientMap = [
@@ -112,6 +125,9 @@ let gradientMap = [
     "passionFruit" : AnyView(passionFruit),
     "icyBlue" : AnyView(icyBlue),
     "goldenHour" : AnyView(goldenHour),
-    "autumnLeaves" : AnyView(autumnLeaves)
+    "autumnLeaves" : AnyView(autumnLeaves),
+    "coralReef" : AnyView(autumnLeaves),
+    "jungle" : AnyView(jungle)
+
 ] as [String : AnyView]
 

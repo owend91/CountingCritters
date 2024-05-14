@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct ImageTranslation {
-    var scale = 0.0
+    var scale = 1.0
     var y = 0.0
     var x = 0.0
     var animation: Animation = .smooth

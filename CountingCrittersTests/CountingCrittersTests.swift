@@ -15,7 +15,7 @@ final class CountingCrittersTests: XCTestCase {
     }
 
     func testStartGame() throws {
-        var vm = CountingViewModel()
+        let vm = CountingViewModel()
 
         vm.startGame()
         XCTAssertEqual(vm.tapCount, 0, "At game start, the tap count should be 0")
