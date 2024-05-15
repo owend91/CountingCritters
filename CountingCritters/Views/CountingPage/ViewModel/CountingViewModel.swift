@@ -9,6 +9,7 @@ import Foundation
 
 @Observable
 class CountingViewModel {
+    var manuallySelectedCritters: [Critter]?
     var pageCount = 1
     var tapCount = 0
 
@@ -39,8 +40,12 @@ class CountingViewModel {
         tapCount = 0
         determineLayout()
 
-        let allCritters = Critter.allCritters.shuffled()
-        critterPages = Array(allCritters[0...8])
+        if let manuallySelectedCritters {
+            critterPages = manuallySelectedCritters
+        } else {
+            let allCritters = Critter.allCritters.shuffled()
+            critterPages = Array(allCritters[0...8])
+        }
     }
 
     func nextPage() {

@@ -17,6 +17,7 @@ struct CountingView: View {
     @State private var countYOffset = 355.0
     @State private var countXOffset = 0.0
     @State var showingSettings = false
+    var manuallySelectedCritters: [Critter]? = nil
 
     @State private var countScaleEffect = 1.0
     let columns = [
@@ -188,6 +189,7 @@ struct CountingView: View {
         .navigationBarBackButtonHidden(true)
         .onAppear {
             print("On Appear")
+            vm.manuallySelectedCritters = manuallySelectedCritters
             vm.startGame()
         }
 
@@ -195,5 +197,8 @@ struct CountingView: View {
 }
 
 #Preview {
-    CountingView()
+    let allCritters = Critter.allCritters
+    var selectedCritter = allCritters.filter({$0.name == "horse"}).first!
+    var selectedCritters = Array(repeating: selectedCritter, count: 9)
+    return CountingView(manuallySelectedCritters: selectedCritters)
 }

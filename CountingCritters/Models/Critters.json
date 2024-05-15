@@ -77,7 +77,7 @@
     {
         "id": "horse",
         "name": "horse",
-        "background": "rainbow"
+        "background": "pinkNebula"
     },
     {
         "id": "monkey",
@@ -97,7 +97,7 @@
     {
         "id": "owl",
         "name": "owl",
-        "background": "aurora"
+        "background": "amberSunset"
     },
     {
         "id": "panda",
