@@ -13,6 +13,7 @@ extension Color {
 
 struct StartingView: View {
     @State var showingSettings = false
+    @State var vm = StartingViewModel()
 
     var body: some View {
         NavigationStack {
@@ -34,6 +35,7 @@ struct StartingView: View {
                     Spacer()
 
                     StartingImageCarouselView()
+                        .environment(vm)
 
                     Spacer()
 

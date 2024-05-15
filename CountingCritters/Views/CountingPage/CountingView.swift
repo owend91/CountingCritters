@@ -12,14 +12,6 @@ struct CountingView: View {
     @AppStorage("allowAnimation") var allowAnimation: Bool = true
     @AppStorage("manuallySetAnimation") var manuallySetAnimation: Bool = false
 
-    var showAnimation: Bool {
-        if manuallySetAnimation {
-            return allowAnimation
-        } else {
-            return !reduceMotion
-        }
-    }
-
     @State var vm = CountingViewModel()
     @State private var animate = false
     @State private var countYOffset = 355.0
@@ -174,7 +166,7 @@ struct CountingView: View {
                     countYOffset = 0
                     countScaleEffect = 2
                     countXOffset = 0
-                    if showAnimation {
+                    if willShowAnimation(manuallySetAnimation: manuallySetAnimation, allowAnimation: allowAnimation, reduceMotion: reduceMotion) {
                         withAnimation {
                             countYOffset = 355
                             countScaleEffect = 1
