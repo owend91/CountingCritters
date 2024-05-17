@@ -18,7 +18,7 @@ struct StartingView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                BackgroundColor()
+                BackgroundColor(color: AnyView(goldenHour), opacity: 0.5)
                 VStack {
                     InfoSettingButton(showingSettings: $showingSettings)
                         .sheet(isPresented: $showingSettings) {
@@ -44,12 +44,6 @@ struct StartingView: View {
             }
             .preferredColorScheme(.light)
         }
-    }
-}
-
-struct BackgroundColor: View {
-    var body: some View {
-        goldenHour.opacity(0.5).ignoresSafeArea()
     }
 }
 

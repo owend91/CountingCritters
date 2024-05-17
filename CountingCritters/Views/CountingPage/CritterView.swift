@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct CritterView: View {
-    @Binding var vm: CountingViewModel
+    @Environment(CountingViewModel.self) var vm
+//    @Binding var vm: CountingViewModel
     let critterLocation: Int
     let imageTranslation: ImageTranslation
 
@@ -50,5 +51,5 @@ struct CritterView: View {
     translation.scale = 0.65
     translation.rotation = 40.0
 
-    return CritterView(vm: .constant(CountingViewModel()), critterLocation: 0, imageTranslation: translation)
+    return CritterView(critterLocation: 0, imageTranslation: translation).environment(CountingViewModel())
 }

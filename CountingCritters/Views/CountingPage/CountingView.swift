@@ -14,13 +14,13 @@ struct CountingView: View {
     @AppStorage("allowHaptics") var allowHaptics: Bool = true
 
     @State var vm = CountingViewModel()
-    @State private var animate = false
     @State private var countYOffset = 355.0
     @State private var countXOffset = 0.0
+    @State private var countScaleEffect = 1.0
+
     @State var showingSettings = false
     var manuallySelectedCritters: [Critter]? = nil
 
-    @State private var countScaleEffect = 1.0
     let columns = [
         GridItem(.flexible()),
             GridItem(.flexible()),
@@ -28,35 +28,10 @@ struct CountingView: View {
     ]
     var body: some View {
         ZStack {
-            gradientMap[vm.currentCritter.background]
-                .ignoresSafeArea()
+            BackgroundColor(color: gradientMap[vm.currentCritter.background] ?? AnyView(goldenHour))
 
-
-            LazyVGrid(columns: columns) {
-
-                ForEach(0...8, id: \.self) { count in
-                    if vm.layout.contains(count) {
-                        CritterView(vm: $vm, critterLocation: count, imageTranslation: vm.imageTranslations[count])
-                            .onTapGesture {
-                                if !vm.currentTaps.contains(count) {
-                                    vm.tapCount += 1
-                                    animate.toggle()
-                                    withAnimation {
-                                        vm.tapDictionary[count] = vm.tapCount
-                                    }
-                                }
-                            }
-                            .sensoryFeedback(allowHaptics ? .success : .impact(flexibility: .soft, intensity: 0), trigger: vm.tapCount) { _, _ in
-                                vm.tapCount != 0
-                            }
-                    } 
-                    else {
-                        Text(" ")
-                    }
-                }
-
-            }
-            .padding(.horizontal)
+            CritterBoard()
+                .environment(vm)
 
             VStack {
                 ZStack {
@@ -193,7 +168,6 @@ struct CountingView: View {
             vm.manuallySelectedCritters = manuallySelectedCritters
             vm.startGame()
         }
-
     }
 }
 
