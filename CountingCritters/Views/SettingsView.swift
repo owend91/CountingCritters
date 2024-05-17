@@ -11,6 +11,7 @@ struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
     @AppStorage("allowAnimation") var allowAnimation: Bool = true
     @AppStorage("manuallySetAnimation") var manuallySetAnimation: Bool =  false
+    @AppStorage("allowHaptics") var allowHaptics: Bool =  false
     var restartGame: (() -> Void)?
 //    var showRestartButton = false
 
@@ -22,6 +23,11 @@ struct SettingsView: View {
                         .onChange(of: allowAnimation) {
                             manuallySetAnimation = true
                         }
+                    
+                    Divider()
+                        .padding(0.5)
+
+                    Toggle("Allow Haptics", isOn: $allowHaptics)
                 }
                 .listRowBackground(Color.clear)
                 .padding()

@@ -11,6 +11,7 @@ struct CountingView: View {
     @Environment(\.accessibilityReduceMotion) var reduceMotion
     @AppStorage("allowAnimation") var allowAnimation: Bool = true
     @AppStorage("manuallySetAnimation") var manuallySetAnimation: Bool = false
+    @AppStorage("allowHaptics") var allowHaptics: Bool = true
 
     @State var vm = CountingViewModel()
     @State private var animate = false
@@ -45,7 +46,7 @@ struct CountingView: View {
                                     }
                                 }
                             }
-                            .sensoryFeedback(.success, trigger: vm.tapCount) { _, _ in
+                            .sensoryFeedback(allowHaptics ? .success : .impact(flexibility: .soft, intensity: 0), trigger: vm.tapCount) { _, _ in
                                 vm.tapCount != 0
                             }
                     } 
