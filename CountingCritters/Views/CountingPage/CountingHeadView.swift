@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CountingHeaderView: View {
+struct CountingHeadView: View {
     @Environment(CountingViewModel.self) var vm
     @State var showingSettings = false
     var body: some View {
@@ -71,5 +71,5 @@ struct CountingHeaderView: View {
 }
 
 #Preview {
-    CountingHeaderView()
+    CountingHeadView()
 }
