@@ -40,7 +40,7 @@ struct CountingView: View {
 
 #Preview {
     let allCritters = Critter.allCritters
-    var selectedCritter = allCritters.filter({$0.name == "horse"}).first!
-    var selectedCritters = Array(repeating: selectedCritter, count: 9)
+    let selectedCritter = allCritters.filter({$0.name == "horse"}).first!
+    let selectedCritters = Array(repeating: selectedCritter, count: 9)
     return CountingView(manuallySelectedCritters: selectedCritters)
 }
