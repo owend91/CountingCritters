@@ -13,19 +13,38 @@ struct CountingFootView: View {
     @AppStorage("allowAnimation") var allowAnimation: Bool = true
     @AppStorage("manuallySetAnimation") var manuallySetAnimation: Bool = false
 
+    @State var constantYOffsetAmount = 0.0
+    @State var constantXOffsetAmount = 0.0
+
     @State private var countYOffset = 355.0
     @State private var countXOffset = 0.0
     @State private var countScaleEffect = 1.0
+
+    
+
     var body: some View {
-        ZStack {
-            FooterBackground()
+        GeometryReader { geometry in
+            ZStack {
+                FooterBackground()
 
-            CountTextView(countScaleEffect: countScaleEffect,
-                          countXOffset: countXOffset,
-                          countYOffset: countYOffset)
+                CountTextView(countScaleEffect: countScaleEffect,
+                              countXOffset: countXOffset,
+                              countYOffset: countYOffset)
 
-            if vm.pageIsDone {
-                NextPageButton(countXOffset: $countXOffset)
+                if vm.pageIsDone {
+                    NextPageButton(countXOffset: $countXOffset, yOffsetAmount: constantYOffsetAmount)
+                }
+            }
+            .onAppear {
+                constantYOffsetAmount = geometry.size.height / 2 - 71
+                if hasHomeButton {
+                    constantYOffsetAmount += 25
+                }
+                constantXOffsetAmount = (geometry.size.width / 2) - geometry.size.width + 51.5
+
+                countYOffset = constantYOffsetAmount
+                print("constantXOffsetAmount: \(constantXOffsetAmount)")
+
             }
         }
         .onChange(of: vm.tapCount) {
@@ -50,10 +69,10 @@ struct CountingFootView: View {
     }
 
     private func setAnimationOffsets() {
-        countYOffset = 355
+        countYOffset = constantYOffsetAmount
         countScaleEffect = 1
         if vm.pageIsDone {
-            countXOffset = -145
+            countXOffset = constantXOffsetAmount
         }
     }
 }
@@ -95,6 +114,7 @@ struct CountTextView: View {
 struct NextPageButton: View {
     @Environment(CountingViewModel.self) var vm
     @Binding var countXOffset: Double
+    let yOffsetAmount: Double
 
     var body: some View {
         Button {
@@ -115,7 +135,7 @@ struct NextPageButton: View {
                     .padding(.trailing, 40)
             }
         }
-        .offset(y: 355.0)
+        .offset(y: yOffsetAmount)
     }
 }
 

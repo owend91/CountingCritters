@@ -13,7 +13,6 @@ struct SettingsView: View {
     @AppStorage("manuallySetAnimation") var manuallySetAnimation: Bool =  false
     @AppStorage("allowHaptics") var allowHaptics: Bool =  false
     var restartGame: (() -> Void)?
-//    var showRestartButton = false
 
     var body: some View {
         Form {
@@ -73,7 +72,6 @@ struct SettingsView: View {
         .listSectionSpacing(.leastNonzeroMagnitude)
         .scrollContentBackground(.hidden)
     }
-
 }
 
 #Preview {

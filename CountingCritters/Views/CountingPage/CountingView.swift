@@ -10,7 +10,7 @@ import SwiftUI
 struct CountingView: View {
     @State var vm = CountingViewModel()
     var manuallySelectedCritters: [Critter]? = nil
-
+    
     var body: some View {
         ZStack {
             BackgroundColor(color: gradientMap[vm.currentCritter.background] ?? AnyView(goldenHour))
@@ -18,8 +18,18 @@ struct CountingView: View {
             // NOTE: The board is displaying before the header and footer so that the
             // Critters at the top of the board will be under the material
             // (only small portions of the critter will be covered, if any)
-            CritterBoard()
-                .environment(vm)
+            // ALSO - something about devices with the home button (ie iPhone SE)
+            // caused the board to push the header and footer if all three rows
+            // of the grid were being used.  Putting a frame on the board for those
+            // devices seems to have fixed the issue
+            if hasHomeButton {
+                CritterBoard()
+                    .environment(vm)
+                    .frame(maxHeight: 200)
+            } else {
+                CritterBoard()
+                    .environment(vm)
+            }
 
             CountingHeadView()
                 .environment(vm)
@@ -34,6 +44,7 @@ struct CountingView: View {
             //Manually selected critters are only used in the preview for testing
             vm.manuallySelectedCritters = manuallySelectedCritters
             vm.startGame()
+            print("Has home button: \(hasHomeButton)")
         }
     }
 }

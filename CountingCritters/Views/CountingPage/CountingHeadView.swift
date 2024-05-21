@@ -11,7 +11,6 @@ struct CountingHeadView: View {
     @Environment(CountingViewModel.self) var vm
     @State var showingSettings = false
 
-
     var body: some View {
         VStack {
             ZStack {
