@@ -64,7 +64,7 @@ struct FooterBackground: View {
             Spacer()
             HStack {
                 Spacer()
-                Text(" ")
+                PlaceholderText()
                     .font(.title)
                     .bold()
                 Spacer()

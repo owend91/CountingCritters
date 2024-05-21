@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		636727222BFCFB7D00060ED7 /* PlaceholderText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636727212BFCFB7D00060ED7 /* PlaceholderText.swift */; };
 		63BA92352BEAB927005B8E36 /* CountingCrittersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BA92342BEAB927005B8E36 /* CountingCrittersTests.swift */; };
 		63BA923C2BEAC1D7005B8E36 /* CritterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BA923B2BEAC1D7005B8E36 /* CritterView.swift */; };
 		63C4FB632BF3CC11004B7E98 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C4FB622BF3CC11004B7E98 /* SettingsView.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		636727212BFCFB7D00060ED7 /* PlaceholderText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderText.swift; sourceTree = "<group>"; };
 		63BA92322BEAB927005B8E36 /* CountingCrittersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountingCrittersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63BA92342BEAB927005B8E36 /* CountingCrittersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountingCrittersTests.swift; sourceTree = "<group>"; };
 		63BA923B2BEAC1D7005B8E36 /* CritterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CritterView.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				63D2664D2BF802A90019FC68 /* BackgroundColor.swift */,
+				636727212BFCFB7D00060ED7 /* PlaceholderText.swift */,
 			);
 			path = HelperViews;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				63F6075D2BE3E0DD0000E44B /* BackgroundGradients.swift in Sources */,
 				63D266502BF809090019FC68 /* CritterBoard.swift in Sources */,
 				63F607612BE3E8CE0000E44B /* Bundle-Decodable.swift in Sources */,
+				636727222BFCFB7D00060ED7 /* PlaceholderText.swift in Sources */,
 				63F6075F2BE3E8130000E44B /* Critter.swift in Sources */,
 				63C4FB6A2BF53C27004B7E98 /* StartingImageCarouselView.swift in Sources */,
 				63C4FB632BF3CC11004B7E98 /* SettingsView.swift in Sources */,

@@ -34,7 +34,7 @@ struct CritterBoard: View {
                         }
                 }
                 else {
-                    Text(" ")
+                    PlaceholderText()
                 }
             }
         }

@@ -36,7 +36,7 @@ struct CritterView: View {
             } else {
                 //This else keeps the spacing when the critter has not been tapped yet
                 //Otherwise, after a tap, the critters may shift slightly
-                Text("")
+                PlaceholderText()
                     .frame(width: 20, height: 20)
 
             }
