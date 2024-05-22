@@ -63,6 +63,8 @@ class CountingViewModel {
         tapDictionary.removeAll()
         pageCount = 1
         tapCount = 0
+        layout = []
+        critterPages = []
     }
 
     func nextPage() {
@@ -95,7 +97,6 @@ class CountingViewModel {
             layout.append(gridLocation)
             imageTranslations[gridLocation] = translation
         }
-        print("📈 layout: \(layout)")
     }
 
     func hasCritterBeenTapped(_ critterLocation: Int) -> Bool {
