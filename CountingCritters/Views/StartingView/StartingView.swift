@@ -14,17 +14,18 @@ extension Color {
 struct StartingView: View {
     @State var showingSettings = false
     @State var vm = StartingViewModel()
+    @State var path = NavigationPath()
 
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             ZStack {
                 BackgroundColor(color: AnyView(goldenHour), opacity: 0.5)
                 VStack {
                     InfoSettingButton(showingSettings: $showingSettings)
                         .sheet(isPresented: $showingSettings) {
-                            SettingsView()
+                            SettingsView(path: $path)
                                 .presentationBackground(.ultraThinMaterial)
-                                .presentationDetents([.fraction(0.3)])
+                                .presentationDetents([.fraction(0.4)])
                                 .presentationDragIndicator(.visible)
                         }
 
@@ -39,9 +40,12 @@ struct StartingView: View {
 
                     Spacer()
 
-                    StartButton()
+                    StartButton(path: $path)
                 }
             }
+            .navigationDestination(for: Bool.self, destination: { _ in
+                CountingView(path: $path)
+            })
             .preferredColorScheme(.light)
         }
     }
@@ -57,20 +61,35 @@ struct StartingTitleView: View {
 }
 
 struct StartButton: View {
+    @Binding var path: NavigationPath
     var body: some View {
-        NavigationLink(destination: CountingView()) {
+        Button {
+            path.append(true)
+        } label: {
             HStack {
                 Spacer()
                 Text("Start")
                     .font(.title)
                     .bold()
                 Spacer()
-
             }
             .padding()
             .background(Color.darkNavy)
             .foregroundStyle(.yellow)
         }
+//        NavigationLink(destination: CountingView()) {
+//            HStack {
+//                Spacer()
+//                Text("Start")
+//                    .font(.title)
+//                    .bold()
+//                Spacer()
+//
+//            }
+//            .padding()
+//            .background(Color.darkNavy)
+//            .foregroundStyle(.yellow)
+//        }
     }
 }
 

@@ -59,6 +59,12 @@ class CountingViewModel {
         determineLayout()
     }
 
+    func quitGame() {
+        tapDictionary.removeAll()
+        pageCount = 1
+        tapCount = 0
+    }
+
     func nextPage() {
         tapDictionary.removeAll()
         pageCount += 1

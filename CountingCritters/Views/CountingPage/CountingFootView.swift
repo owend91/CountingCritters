@@ -12,6 +12,7 @@ struct CountingFootView: View {
     @Environment(\.accessibilityReduceMotion) var reduceMotion
     @AppStorage("allowAnimation") var allowAnimation: Bool = true
     @AppStorage("manuallySetAnimation") var manuallySetAnimation: Bool = false
+    @Binding var exitPressed: Bool
 
     @State var constantYOffsetAmount = 0.0
     @State var constantXOffsetAmount = 0.0
@@ -32,7 +33,7 @@ struct CountingFootView: View {
                               countYOffset: countYOffset)
 
                 if vm.pageIsDone {
-                    NextPageButton(countXOffset: $countXOffset, yOffsetAmount: constantYOffsetAmount)
+                    NextPageButton(countXOffset: $countXOffset, exitPressed: $exitPressed, yOffsetAmount: constantYOffsetAmount)
                 }
             }
             .onAppear {
@@ -111,20 +112,22 @@ struct CountTextView: View {
 struct NextPageButton: View {
     @Environment(CountingViewModel.self) var vm
     @Binding var countXOffset: Double
+    @Binding var exitPressed: Bool
+
     let yOffsetAmount: Double
 
     var body: some View {
         Button {
             countXOffset = 0
             if vm.pageCount == 9 {
-                vm.startGame()
+                exitPressed.toggle()
             } else {
                 vm.nextPage()
             }
         } label: {
             HStack {
                 Spacer()
-                Text(vm.pageCount == 9 ? "Start Over!" : "Next")
+                Text(vm.pageCount == 9 ? "Exit" : "Next")
                     .font(.system(size: 55))
                     .foregroundStyle(.white)
                     .bold()
@@ -137,6 +140,6 @@ struct NextPageButton: View {
 }
 
 #Preview {
-    CountingFootView()
+    CountingFootView(exitPressed: .constant(false))
         .environment(CountingViewModel())
 }

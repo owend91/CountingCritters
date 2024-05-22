@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct CountingView: View {
+    @Environment(\.dismiss) private var dismiss
+    @Binding var path: NavigationPath
     @State var vm = CountingViewModel()
     var manuallySelectedCritters: [Critter]? = nil
-    
+    @State var exitPressed = false
+
     var body: some View {
         ZStack {
             BackgroundColor(color: gradientMap[vm.currentCritter.background] ?? AnyView(goldenHour))
@@ -31,10 +34,10 @@ struct CountingView: View {
                     .environment(vm)
             }
 
-            CountingHeadView()
+            CountingHeadView(path: $path)
                 .environment(vm)
 
-            CountingFootView()
+            CountingFootView(exitPressed: $exitPressed)
                 .environment(vm)
 
         }
@@ -53,10 +56,31 @@ struct CountingView: View {
             Button("New Critters") {
                 vm.startGame()
             }
+            Button("Exit Game") {
+                dismiss()
+                vm.quitGame()
+                path = NavigationPath()
+            }
         } message: {
             Text("Congratulations! Count again?")
         }
-
+        .confirmationDialog("Exit", isPresented: $exitPressed) {
+            Group {
+                Button("Same Critters") {
+                    vm.restartGame()
+                }
+                Button("New Critters") {
+                    vm.startGame()
+                }
+                Button("Exit Game") {
+                    vm.quitGame()
+                    dismiss()
+                    path = NavigationPath()
+                }
+            }
+        } message: {
+            Text("Want to count again?")
+        }
     }
 }
 
@@ -64,5 +88,5 @@ struct CountingView: View {
     let allCritters = Critter.allCritters
     let selectedCritter = allCritters.filter({$0.name == "horse"}).first!
     let selectedCritters = Array(repeating: selectedCritter, count: 9)
-    return CountingView(manuallySelectedCritters: selectedCritters)
+    return CountingView(path: .constant(NavigationPath()), manuallySelectedCritters: selectedCritters)
 }

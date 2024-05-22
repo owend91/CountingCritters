@@ -10,6 +10,7 @@ import SwiftUI
 struct CountingHeadView: View {
     @Environment(CountingViewModel.self) var vm
     @State var showingSettings = false
+    @Binding var path: NavigationPath
 
     var body: some View {
         VStack {
@@ -38,11 +39,15 @@ struct CountingHeadView: View {
                     }
                     .offset(y: -30)
                     .sheet(isPresented: $showingSettings) {
-                        SettingsView() {
+                        SettingsView(path: $path) {
+                            vm.restartGame()
+                        } newGame: {
                             vm.startGame()
+                        } quitGame: {
+                            vm.quitGame()
                         }
                         .presentationBackground(.ultraThinMaterial)
-                        .presentationDetents([.fraction(0.4)])
+                        .presentationDetents([.fraction(0.5)])
                         .presentationDragIndicator(.visible)
                     }
                 }
@@ -75,6 +80,6 @@ struct TitleTextView: View {
 }
 
 #Preview {
-    CountingHeadView()
+    CountingHeadView(path: .constant(NavigationPath()))
         .environment(CountingViewModel())
 }

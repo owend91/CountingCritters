@@ -12,62 +12,88 @@ struct SettingsView: View {
     @AppStorage("allowAnimation") var allowAnimation: Bool = true
     @AppStorage("manuallySetAnimation") var manuallySetAnimation: Bool =  false
     @AppStorage("allowHaptics") var allowHaptics: Bool =  false
+    @State var restartPressed = false
+    @Binding var path: NavigationPath
+
     var restartGame: (() -> Void)?
+    var newGame: (() -> Void)?
+    var quitGame: (() -> Void)?
 
     var body: some View {
-        Form {
-            Section {
-                VStack {
-                    Toggle("Allow Animation", isOn: $allowAnimation)
-                        .onChange(of: allowAnimation) {
-                            manuallySetAnimation = true
-                        }
-                    
-                    Divider()
-                        .padding(0.5)
+        VStack {
+            Form {
+                Section {
+                    VStack {
+                        Toggle("Allow Animation", isOn: $allowAnimation)
+                            .onChange(of: allowAnimation) {
+                                manuallySetAnimation = true
+                            }
 
-                    Toggle("Allow Haptics", isOn: $allowHaptics)
-                }
-                .listRowBackground(Color.clear)
-                .padding()
-                .background(.thinMaterial)
-                .mask {
-                    RoundedRectangle(cornerRadius: 10)
-                }
-            }
-            Section {
-                VStack {
-                    HStack {
-                        Spacer()
-                        Text("Icons used under Creative Commons CC0. Created by [Kenney](https://kenney.nl/assets/animal-pack-redux)")
-                            .multilineTextAlignment(.center)
-                            .font(.footnote)
-                        Spacer()
+                        Divider()
+                            .padding(0.5)
+
+                        Toggle("Allow Haptics", isOn: $allowHaptics)
+                    }
+                    .listRowBackground(Color.clear)
+                    .padding()
+                    .background(.thinMaterial)
+                    .mask {
+                        RoundedRectangle(cornerRadius: 10)
                     }
                 }
-                .listRowBackground(Color.clear)
-                .padding()
-                .background(.thinMaterial)
-                .mask {
-                    RoundedRectangle(cornerRadius: 10)
-                }
-            }
-            if let restartGame {
                 Section {
-                    Button(role: .destructive) {
-                        restartGame()
-                        dismiss()
-                    } label: {
+                    VStack {
                         HStack {
                             Spacer()
-                            Text("Restart!")
+                            Text("Icons used under Creative Commons CC0. Created by [Kenney](https://kenney.nl/assets/animal-pack-redux)")
+                                .multilineTextAlignment(.center)
+                                .font(.footnote)
                             Spacer()
                         }
                     }
-                    .buttonStyle(BorderedProminentButtonStyle())
                     .listRowBackground(Color.clear)
+                    .padding()
+                    .background(.thinMaterial)
+                    .mask {
+                        RoundedRectangle(cornerRadius: 10)
+                    }
+                }
+                if let _ = restartGame {
+                    Section {
+                        Button(role: .destructive) {
+                            restartPressed.toggle()
+                        } label: {
+                            HStack {
+                                Spacer()
+                                Text("Restart!")
+                                Spacer()
+                            }
+                        }
+                        .buttonStyle(BorderedProminentButtonStyle())
+                        .listRowBackground(Color.clear)
+                    }
                 }
             }
+            Spacer()
+        }
+        .confirmationDialog("Exit", isPresented: $restartPressed) {
+            Group {
+                Button("Same Critters") {
+                    restartGame!()
+                    dismiss()
+                }
+                Button("New Critters") {
+                    newGame!()
+                    dismiss()
+                }
+                Button("Exit Game") {
+                    quitGame!()
+                    dismiss()
+                    path = NavigationPath()
+                }
+            }
+        } message: {
+            Text("Want to count again?")
         }
         .listSectionSpacing(.leastNonzeroMagnitude)
         .scrollContentBackground(.hidden)
@@ -75,5 +101,5 @@ struct SettingsView: View {
 }
 
 #Preview {
-    SettingsView() {}
+    SettingsView(path: .constant(NavigationPath()), newGame:  {})
 }
