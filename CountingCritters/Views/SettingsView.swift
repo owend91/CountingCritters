@@ -45,7 +45,14 @@ struct SettingsView: View {
                     VStack {
                         HStack {
                             Spacer()
-                            Text("Icons used under Creative Commons CC0. Created by [Kenney](https://kenney.nl/assets/animal-pack-redux)")
+                            Text("Critter icons used under Creative Commons CC0. Created by [Kenney](https://kenney.nl/assets/animal-pack-redux)")
+                                .multilineTextAlignment(.center)
+                                .font(.footnote)
+                            Spacer()
+                        }
+                        HStack {
+                            Spacer()
+                            Text("App Icon created using [ChatGPT](https://chatgpt.com)")
                                 .multilineTextAlignment(.center)
                                 .font(.footnote)
                             Spacer()

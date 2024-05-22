@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		636727222BFCFB7D00060ED7 /* PlaceholderText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636727212BFCFB7D00060ED7 /* PlaceholderText.swift */; };
+		636727262BFE68EA00060ED7 /* StartingViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636727252BFE68EA00060ED7 /* StartingViewModelTest.swift */; };
 		63BA92352BEAB927005B8E36 /* CountingCrittersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BA92342BEAB927005B8E36 /* CountingCrittersTests.swift */; };
 		63BA923C2BEAC1D7005B8E36 /* CritterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BA923B2BEAC1D7005B8E36 /* CritterView.swift */; };
 		63C4FB632BF3CC11004B7E98 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C4FB622BF3CC11004B7E98 /* SettingsView.swift */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		636727212BFCFB7D00060ED7 /* PlaceholderText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderText.swift; sourceTree = "<group>"; };
+		636727252BFE68EA00060ED7 /* StartingViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingViewModelTest.swift; sourceTree = "<group>"; };
 		63BA92322BEAB927005B8E36 /* CountingCrittersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountingCrittersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63BA92342BEAB927005B8E36 /* CountingCrittersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountingCrittersTests.swift; sourceTree = "<group>"; };
 		63BA923B2BEAC1D7005B8E36 /* CritterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CritterView.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				63BA92342BEAB927005B8E36 /* CountingCrittersTests.swift */,
+				636727252BFE68EA00060ED7 /* StartingViewModelTest.swift */,
 			);
 			path = CountingCrittersTests;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				636727262BFE68EA00060ED7 /* StartingViewModelTest.swift in Sources */,
 				63BA92352BEAB927005B8E36 /* CountingCrittersTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
