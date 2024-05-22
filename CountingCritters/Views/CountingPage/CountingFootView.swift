@@ -41,10 +41,7 @@ struct CountingFootView: View {
                     constantYOffsetAmount += 25
                 }
                 constantXOffsetAmount = (geometry.size.width / 2) - geometry.size.width + 51.5
-
                 countYOffset = constantYOffsetAmount
-                print("constantXOffsetAmount: \(constantXOffsetAmount)")
-
             }
         }
         .onChange(of: vm.tapCount) {

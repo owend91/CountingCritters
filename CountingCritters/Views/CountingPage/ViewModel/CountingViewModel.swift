@@ -25,6 +25,10 @@ class CountingViewModel {
         tapCount == pageCount
     }
 
+    var gameIsDone: Bool {
+        pageIsDone && pageCount == 9
+    }
+
     var critterPages: [Critter] = []
     var currentCritter: Critter {
         if critterPages.isEmpty {
@@ -46,6 +50,13 @@ class CountingViewModel {
             let allCritters = Critter.allCritters.shuffled()
             critterPages = Array(allCritters[0...8])
         }
+    }
+
+    func restartGame() {
+        tapDictionary.removeAll()
+        pageCount = 1
+        tapCount = 0
+        determineLayout()
     }
 
     func nextPage() {

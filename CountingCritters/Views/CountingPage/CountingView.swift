@@ -46,6 +46,17 @@ struct CountingView: View {
             vm.startGame()
             print("Has home button: \(hasHomeButton)")
         }
+        .confirmationDialog("Complete", isPresented: .constant(vm.gameIsDone)) {
+            Button("Same Critters") {
+                vm.restartGame()
+            }
+            Button("New Critters") {
+                vm.startGame()
+            }
+        } message: {
+            Text("Congratulations! Count again?")
+        }
+
     }
 }
 
