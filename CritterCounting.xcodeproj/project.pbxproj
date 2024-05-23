@@ -288,7 +288,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 63F6073C2BE187A20000E44B /* Build configuration list for PBXProject "CountingCritters" */;
+			buildConfigurationList = 63F6073C2BE187A20000E44B /* Build configuration list for PBXProject "CritterCounting" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -600,7 +600,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		63F6073C2BE187A20000E44B /* Build configuration list for PBXProject "CountingCritters" */ = {
+		63F6073C2BE187A20000E44B /* Build configuration list for PBXProject "CritterCounting" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				63F6074D2BE187A40000E44B /* Debug */,

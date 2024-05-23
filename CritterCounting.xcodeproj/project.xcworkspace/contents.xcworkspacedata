@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:">
+      location = "self:/Users/david/Documents/iOS Programming/CountingCritters/CritterCounting.xcodeproj">
    </FileRef>
 </Workspace>
