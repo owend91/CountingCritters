@@ -53,8 +53,9 @@ struct StartingView: View {
 
 struct StartingTitleView: View {
     var body: some View {
-        Text("Counting Critters")
-            .font(.system(size: 45, weight: .bold, design: .rounded))
+        Text("Counting Creatures")
+            .multilineTextAlignment(.center)
+            .font(.system(size: 70, weight: .bold, design: .rounded))
             .foregroundStyle(Color.darkNavy)
             .shadow(color: .gray, radius: 2, x: 0, y: 2)
     }
