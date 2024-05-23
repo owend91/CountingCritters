@@ -47,7 +47,7 @@ final class StartingViewModelTest: XCTestCase {
             XCTAssertEqual(vm.rightImageIndex, rightImageIndex, "When the image count is \(i), the right image index should be \(rightImageIndex)")
         }
 
-        //Verify no crash after going the image count (currently 30)
+        //Verify no crash after going over the image count (currently 30)
         vm.updateImages()
         XCTAssertEqual(vm.leftImageIndex, 1, "When the image updates 31 times, the left image index should be 1")
         XCTAssertEqual(vm.centerImageIndex, 2, "When the image updates 31 times, the center image index should be 2")

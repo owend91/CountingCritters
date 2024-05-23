@@ -47,6 +47,7 @@
 /* Begin PBXFileReference section */
 		636727212BFCFB7D00060ED7 /* PlaceholderText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderText.swift; sourceTree = "<group>"; };
 		636727252BFE68EA00060ED7 /* StartingViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingViewModelTest.swift; sourceTree = "<group>"; };
+		636727272BFE8AD300060ED7 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = CountingCritters/PrivacyInfo.xcprivacy; sourceTree = SOURCE_ROOT; };
 		63BA92322BEAB927005B8E36 /* CountingCrittersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountingCrittersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63BA92342BEAB927005B8E36 /* CountingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountingViewModelTests.swift; sourceTree = "<group>"; };
 		63BA923B2BEAC1D7005B8E36 /* CritterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CritterView.swift; sourceTree = "<group>"; };
@@ -216,6 +217,7 @@
 				63F607442BE187A20000E44B /* CountingCrittersApp.swift */,
 				63D7544B2BF55A180080297E /* HelperMethods.swift */,
 				63F607482BE187A40000E44B /* Assets.xcassets */,
+				636727272BFE8AD300060ED7 /* PrivacyInfo.xcprivacy */,
 				63F6074A2BE187A40000E44B /* Preview Content */,
 			);
 			path = CountingCritters;
