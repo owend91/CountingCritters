@@ -20,6 +20,7 @@ struct InfoSettingButton: View {
                     .foregroundStyle(.regularMaterial)
                     .padding(.trailing)
             }
+            .accessibilityIdentifier("Info")
         }
     }
 }

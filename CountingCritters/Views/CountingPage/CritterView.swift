@@ -33,6 +33,8 @@ struct CritterView: View {
                     .foregroundStyle(.white.opacity(0.7))
                     .shadow(radius: 10)
                     .frame(width: 20, height: 20)
+                    .accessibilityIdentifier("Tapped\(vm.tapDictionary[critterLocation] ?? 0)")
+
             } else {
                 //This else keeps the spacing when the critter has not been tapped yet
                 //Otherwise, after a tap, the critters may shift slightly

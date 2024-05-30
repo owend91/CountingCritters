@@ -106,6 +106,7 @@ struct CountTextView: View {
             .foregroundStyle(.white)
             .offset(x: countXOffset, y: countYOffset)
             .shadow(radius: 5)
+            .accessibilityIdentifier("tapCounter")
     }
 }
 

@@ -28,11 +28,14 @@ struct SettingsView: View {
                             .onChange(of: allowAnimation) {
                                 manuallySetAnimation = true
                             }
+                            .accessibilityIdentifier("Allow Animation")
 
                         Divider()
                             .padding(0.5)
 
                         Toggle("Allow Haptics", isOn: $allowHaptics)
+                            .accessibilityIdentifier("Allow Haptics")
+
                     }
                     .listRowBackground(Color.clear)
                     .padding()
