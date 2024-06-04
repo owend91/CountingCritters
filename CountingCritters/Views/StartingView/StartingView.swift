@@ -78,19 +78,6 @@ struct StartButton: View {
             .background(Color.darkNavy)
             .foregroundStyle(.yellow)
         }
-//        NavigationLink(destination: CountingView()) {
-//            HStack {
-//                Spacer()
-//                Text("Start")
-//                    .font(.title)
-//                    .bold()
-//                Spacer()
-//
-//            }
-//            .padding()
-//            .background(Color.darkNavy)
-//            .foregroundStyle(.yellow)
-//        }
     }
 }
 
