@@ -58,6 +58,7 @@
 		636727252BFE68EA00060ED7 /* StartingViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingViewModelTest.swift; sourceTree = "<group>"; };
 		636727272BFE8AD300060ED7 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = CountingCritters/PrivacyInfo.xcprivacy; sourceTree = SOURCE_ROOT; };
 		63932A6C2C0E537B00D06AEF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		63932A6D2C10C0CA00D06AEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		63BA92322BEAB927005B8E36 /* CountingCrittersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountingCrittersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63BA92342BEAB927005B8E36 /* CountingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountingViewModelTests.swift; sourceTree = "<group>"; };
 		63BA923B2BEAC1D7005B8E36 /* CritterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CritterView.swift; sourceTree = "<group>"; };
@@ -242,6 +243,7 @@
 		63F607432BE187A20000E44B /* CountingCritters */ = {
 			isa = PBXGroup;
 			children = (
+				63932A6D2C10C0CA00D06AEF /* Info.plist */,
 				634E7EC62BEAC48D00921D0B /* Extensions */,
 				634E7EC42BEAC46200921D0B /* Models */,
 				634E7EC32BEAC3EB00921D0B /* Views */,
@@ -648,11 +650,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"CountingCritters/Preview Content\"";
 				DEVELOPMENT_TEAM = PGC4FV57FE;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CountingCritters/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Critter Counting";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -667,9 +670,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.david.CritterCounting;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -679,11 +686,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"CountingCritters/Preview Content\"";
 				DEVELOPMENT_TEAM = PGC4FV57FE;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CountingCritters/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Critter Counting";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -698,9 +706,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.david.CritterCounting;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
