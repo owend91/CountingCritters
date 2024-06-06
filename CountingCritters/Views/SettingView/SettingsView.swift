@@ -14,6 +14,7 @@ struct SettingsView: View {
     @AppStorage("allowHaptics") var allowHaptics: Bool =  false
     @State var restartPressed = false
     @Binding var path: NavigationPath
+    @State var displayParentalGate = false
 
     var restartGame: (() -> Void)?
     var newGame: (() -> Void)?
@@ -48,9 +49,21 @@ struct SettingsView: View {
                     VStack {
                         HStack {
                             Spacer()
-                            Text("Critter icons used under Creative Commons CC0. Created by [Kenney](https://kenney.nl/assets/animal-pack-redux)")
+                            HStack {
+                                Text("Critter icons used under Creative Commons CC0. Created by ") +
+//                                Text("[Kenney](https://kenney.nl/assets/animal-pack-redux)")
+                                Text("Kenney")
+                                    .foregroundStyle(.link)
+                            }
                                 .multilineTextAlignment(.center)
                                 .font(.footnote)
+                                .onTapGesture {
+                                    displayParentalGate.toggle()
+                                }
+                                .sheet(isPresented: $displayParentalGate, content: {
+                                    ParentalGate()
+                                })
+
                             Spacer()
                         }
                         HStack {
