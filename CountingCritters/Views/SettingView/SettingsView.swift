@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+extension String: Identifiable {
+    public var id: String {self}
+}
+
 struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
     @AppStorage("allowAnimation") var allowAnimation: Bool = true
@@ -15,6 +19,7 @@ struct SettingsView: View {
     @State var restartPressed = false
     @Binding var path: NavigationPath
     @State var displayParentalGate = false
+    @State var urlString: String?
 
     var restartGame: (() -> Void)?
     var newGame: (() -> Void)?
@@ -51,26 +56,28 @@ struct SettingsView: View {
                             Spacer()
                             HStack {
                                 Text("Critter icons used under Creative Commons CC0. Created by ") +
-//                                Text("[Kenney](https://kenney.nl/assets/animal-pack-redux)")
                                 Text("Kenney")
                                     .foregroundStyle(.link)
                             }
-                                .multilineTextAlignment(.center)
-                                .font(.footnote)
-                                .onTapGesture {
-                                    displayParentalGate.toggle()
-                                }
-                                .sheet(isPresented: $displayParentalGate, content: {
-                                    ParentalGate()
-                                })
-
+                            .multilineTextAlignment(.center)
+                            .font(.footnote)
+                            .onTapGesture {
+                                urlString = "https://kenney.nl/assets/animal-pack-redux"
+                            }
                             Spacer()
                         }
                         HStack {
                             Spacer()
-                            Text("App Icon created using [ChatGPT](https://chatgpt.com)")
-                                .multilineTextAlignment(.center)
-                                .font(.footnote)
+                            HStack {
+                                Text("App Icon created using ") +
+                                Text("ChatGPT")
+                                    .foregroundStyle(.link)
+                            }
+                            .multilineTextAlignment(.center)
+                            .font(.footnote)
+                            .onTapGesture {
+                                urlString = "https://chatgpt.com"
+                            }
                             Spacer()
                         }
                     }
@@ -79,6 +86,9 @@ struct SettingsView: View {
                     .background(.thinMaterial)
                     .mask {
                         RoundedRectangle(cornerRadius: 10)
+                    }
+                    .sheet(item: $urlString) { url in
+                        ParentalGate(urlString: url)
                     }
                 }
                 if let _ = restartGame {

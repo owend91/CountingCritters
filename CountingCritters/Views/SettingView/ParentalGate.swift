@@ -13,6 +13,11 @@ struct ParentalGate: View {
     @State var number2: Int = 0
     @State var sum: Int = 0
     @State var enteredSum = ""
+    var urlString: String
+
+    var displayProceedButton: Bool {
+        sum == Int(enteredSum)
+    }
 
     var body: some View {
         ZStack {
@@ -39,7 +44,7 @@ struct ParentalGate: View {
 
                 NumberPad(enteredSum: $enteredSum)
 
-                ButtonRow(displayProceedButton: sum == Int(enteredSum))
+                ButtonRow(displayProceedButton: displayProceedButton, urlString: urlString)
             }
 
         }
@@ -48,6 +53,7 @@ struct ParentalGate: View {
             number2 = Int.random(in: 0...20)
 
             sum = number1 + number2
+            print("url: \(urlString)")
         }
         .onChange(of: enteredSum) {
             if enteredSum.count > 3 {
@@ -61,12 +67,14 @@ struct ParentalGate: View {
 struct ButtonRow: View {
     @Environment(\.dismiss) private var dismiss
     let displayProceedButton: Bool
+    var urlString: String
 
     var body: some View {
         HStack {
             if displayProceedButton {
                 Spacer()
             }
+
             Button {
                 dismiss()
             } label: {
@@ -79,17 +87,24 @@ struct ButtonRow: View {
 
             if displayProceedButton {
                 Spacer()
-                Button {
-                    dismiss()
-                } label: {
-                    Text("Proceed")
-                        .padding()
-                        .background(.green)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .foregroundStyle(.white)
-                }
-                Spacer()
 
+                if let url = URL(string: urlString) {
+                    Link(destination: url) {
+                        Text("Proceed")
+                            .padding()
+                            .background(.green)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .foregroundStyle(.white)
+                    }
+                    .simultaneousGesture(
+                        TapGesture()
+                            .onEnded {
+                                dismiss()
+                            }
+                    )
+                }
+
+                Spacer()
             }
         }
     }
@@ -160,5 +175,5 @@ struct NumberButton: View {
 }
 
 #Preview {
-    ParentalGate()
+    ParentalGate(urlString: "https://www.google.com")
 }

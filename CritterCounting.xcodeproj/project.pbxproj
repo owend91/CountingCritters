@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63001A1E2C12143300F3C3D6 /* ParentalGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63001A1D2C12143300F3C3D6 /* ParentalGate.swift */; };
 		636727222BFCFB7D00060ED7 /* PlaceholderText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636727212BFCFB7D00060ED7 /* PlaceholderText.swift */; };
 		636727262BFE68EA00060ED7 /* StartingViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636727252BFE68EA00060ED7 /* StartingViewModelTest.swift */; };
 		63BA92352BEAB927005B8E36 /* CountingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BA92342BEAB927005B8E36 /* CountingViewModelTests.swift */; };
@@ -54,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		63001A1D2C12143300F3C3D6 /* ParentalGate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentalGate.swift; sourceTree = "<group>"; };
 		636727212BFCFB7D00060ED7 /* PlaceholderText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderText.swift; sourceTree = "<group>"; };
 		636727252BFE68EA00060ED7 /* StartingViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingViewModelTest.swift; sourceTree = "<group>"; };
 		636727272BFE8AD300060ED7 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = CountingCritters/PrivacyInfo.xcprivacy; sourceTree = SOURCE_ROOT; };
@@ -114,13 +116,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		63001A1F2C1255C900F3C3D6 /* SettingView */ = {
+			isa = PBXGroup;
+			children = (
+				63C4FB622BF3CC11004B7E98 /* SettingsView.swift */,
+				63001A1D2C12143300F3C3D6 /* ParentalGate.swift */,
+			);
+			path = SettingView;
+			sourceTree = "<group>";
+		};
 		634E7EC32BEAC3EB00921D0B /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				63D2664C2BF8027E0019FC68 /* HelperViews */,
 				63C4FB662BF53BA6004B7E98 /* StartingView */,
 				63BA923D2BEAC359005B8E36 /* CountingPage */,
-				63C4FB622BF3CC11004B7E98 /* SettingsView.swift */,
+				63001A1F2C1255C900F3C3D6 /* SettingView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -431,6 +442,7 @@
 				63F607592BE2015D0000E44B /* CountingViewModel.swift in Sources */,
 				63F607632BE536FF0000E44B /* ImageTranslation.swift in Sources */,
 				63BA923C2BEAC1D7005B8E36 /* CritterView.swift in Sources */,
+				63001A1E2C12143300F3C3D6 /* ParentalGate.swift in Sources */,
 				63D266562BFBEFB80019FC68 /* CountingHeadView.swift in Sources */,
 				63D2664E2BF802A90019FC68 /* BackgroundColor.swift in Sources */,
 				63D2665B2BFBF0B80019FC68 /* CountingFootView.swift in Sources */,
